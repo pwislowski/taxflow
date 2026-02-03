@@ -1,0 +1,30 @@
+// Project-local debug tasks
+//
+// For more documentation on how to configure debug tasks,
+// see: https://zed.dev/docs/debugger
+[
+  {
+    "label": "taxflow_cli_all",
+    "adapter": "Debugpy",
+    "request": "launch",
+    "module": "app.cli",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "env": {},
+    "args": ["all"],
+    "autoReload": {
+      "enable": true,
+    },
+  },
+  {
+    "label": "taxflow_cli_all_load_db",
+    "adapter": "Debugpy",
+    "request": "launch",
+    "module": "app.cli",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "env": {},
+    "args": ["all", "--load-db"],
+    "autoReload": {
+      "enable": true,
+    },
+  },
+]

@@ -1,0 +1,42 @@
+[project]
+authors = [{ name = "Piotr Wislowski", email = "pwislowski@gmail.com" }]
+name = "taxflow"
+version = "1.0.0"
+description = "ETL process for segmenting entities economic activities for compliance purposes."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "pydantic>=2.12.3",
+    "pydantic-settings[yaml]>=2.11.0",
+    "sqlmodel>=0.0.31",
+    "structlog>=25.5.0",
+]
+
+[project.scripts]
+taxflow = "app.cli:main"
+
+[dependency-groups]
+dev = [
+    "notebook>=7.4.7",
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "ruff>=0.14.14",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 20
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+pythonpath = [ "." ]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore:Config key `yaml_file` is set in model_config but will be ignored because no YamlConfigSettingsSource source is configured.:UserWarning",
+    "ignore:Config key `yaml_file_encoding` is set in model_config but will be ignored because no YamlConfigSettingsSource source is configured.:UserWarning",
+]
